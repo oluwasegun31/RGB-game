@@ -1,0 +1,155 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cabinet Grotesk', sans-serif;
+}
+body{position: relative; width: 100%; overflow-x: hidden;}
+header{
+    width: 100%;
+    background-color: #fff;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+nav{
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 10px;
+}
+.logo{
+    font-size: 2rem;
+    font-weight: 700;
+}
+.logo p{
+    background: linear-gradient(70deg, rgb(66, 207, 125), rgb(190, 42, 42));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.social{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 4px;
+}
+.social a img{
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+.social::after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    height: 5px;
+    background: linear-gradient(45deg, rgb(66, 207, 125), rgb(190, 42, 42));
+}
+.social:hover::after{
+    width: 100%;
+    transition: 0.3s;
+}
+
+main{
+    margin-top: 6rem;
+    padding: 1rem 2rem;
+    width: 100%;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+h2{
+    font-size: 2.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#rgb-code{
+    margin-left: 12px;
+}
+.container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+    margin-top: 3rem;
+}
+#bg-color{
+    height: 150px;
+    cursor: pointer;
+}
+.confirmation{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -10%);
+    background-color: #fff;
+    border: 2px solid #05060f;
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.confirmation h3{
+    font-size: 2rem;
+    margin-bottom: 14px;
+    color: green;
+}
+.confirmation img{
+    width: 60px;
+}
+.confirmation h4{
+    font-size: 1.5rem;
+    margin-top: 2rem;
+}
+.confirmation h4 span{
+    margin-left: 1rem;
+}
+.error{
+    position: absolute;
+    top: 0;
+    right: -300px;
+    width: 250px;
+    padding: 1rem;
+    background-color: #ff8b87;
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 900;
+    border-left: 4px solid red;
+    transition: all 0.4s;
+}
+.error h4{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.error h4 img{margin-right: 5px;}
+.error.active{right: 10px;}
+@media screen and (max-width: 700px) {
+    h2{
+        font-size: 2rem;
+    }
+}
+@media screen and (max-width: 550px) {
+    .logo{
+        font-size: 1.5rem;
+    }
+    main{
+        padding: 1rem 10px;
+    }
+    h2{
+        flex-direction: column;
+    }
+}
+@media screen and (max-width: 320px) {
+    .confirmation{
+        width: 100%;
+    }
+}
