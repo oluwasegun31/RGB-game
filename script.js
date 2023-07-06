@@ -3,6 +3,8 @@ const display = document.querySelector('#rgb-code');
 const confirmation = document.querySelector('.confirmation');
 const scores = document.querySelector('#score');
 const error = document.querySelector('.error');
+const lives = document.querySelector('#lives');
+const confirmTxt = document.querySelector('.confirmation h3')
 
 // a function that adds zero to single digits
 function showZero(num){
@@ -16,7 +18,7 @@ function generateColor(){
     return color
 }
 let color = generateColor();
-display.textContent = color;
+display.textContent = color.toUpperCase();
 
 
 // a function that generates random 6 bg-colors (5 random and 1 from the genratecolor)
@@ -38,24 +40,42 @@ displayContainer.forEach(item=> {
         /// to display either the confirmation or error message when color is clicked on
         if(item.style.backgroundColor === color){
             confirmation.style.display = "flex";
+            confirmTxt.textContent = "Correct!"
+            // to return lives back to full
+            lives.textContent = 3;
             // to increase the score on every success
-            scores.textContent++
+            scores.textContent++;
             setTimeout(()=> {
                 confirmation.style.display = "none"
                 resetRGB()
-            }, 2000)
+            }, 2500)
         }else{
             error.classList.add('active');
             setTimeout(()=> {
                 error.classList.remove('active')
-            }, 2000)
+            }, 2000);
+            //to reduce lives by 1
+            lives.textContent = parseInt(lives.textContent - 1);
+            // to display game over when lives === 0
+            if(lives.textContent === "0"){
+                confirmation.style.display = "flex";
+                confirmTxt.textContent = "Game Over!";
+                setTimeout(()=> {
+                    confirmation.style.display = "none";
+                    resetRGB();
+                }, 2500);
+            }
         }
     })
+    
 })
 
 // a function that resets the game
 function resetRGB(){
     color = generateColor();
     display.textContent = color;
+    lives.textContent = 3
     randomColor();
 }
+
+
