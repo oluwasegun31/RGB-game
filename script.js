@@ -4,7 +4,8 @@ const confirmation = document.querySelector('.confirmation');
 const scores = document.querySelector('#score');
 const error = document.querySelector('.error');
 const lives = document.querySelector('#lives');
-const confirmTxt = document.querySelector('.confirmation h3')
+const confirmTxt = document.querySelector('.confirmation h3');
+const confirmImg = document.querySelector('.confirmation img');
 
 // a function that adds zero to single digits
 function showZero(num){
@@ -40,7 +41,8 @@ displayContainer.forEach(item=> {
         /// to display either the confirmation or error message when color is clicked on
         if(item.style.backgroundColor === color){
             confirmation.style.display = "flex";
-            confirmTxt.textContent = "Correct!"
+            confirmTxt.textContent = "Correct!";
+            confirmImg.setAttribute('src', './asset/icons8-done.svg')
             // to return lives back to full
             lives.textContent = 3;
             // to increase the score on every success
@@ -60,6 +62,7 @@ displayContainer.forEach(item=> {
             if(lives.textContent === "0"){
                 confirmation.style.display = "flex";
                 confirmTxt.textContent = "Game Over!";
+                confirmImg.setAttribute('src', './asset/icons8-close.svg')
                 setTimeout(()=> {
                     confirmation.style.display = "none";
                     resetRGB();
